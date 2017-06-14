@@ -1,0 +1,24 @@
+package {{package}};
+
+{{#imports}}import {{import}};
+{{/imports}}
+
+
+
+import java.util.*;
+
+{{#useBeanValidation}}
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+{{/useBeanValidation}}
+
+{{>generatedAnnotation}}
+{{#operations}}
+public interface {{classname}} {
+{{#operation}}
+
+    {{>returnTypesApi}} {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{#hasMore}},{{/hasMore}}{{/allParams}});
+
+{{/operation}}
+}
+{{/operations}}
